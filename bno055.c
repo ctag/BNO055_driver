@@ -62,6 +62,17 @@
 /*	STRUCTURE DEFINITIONS	*/
 static struct bno055_t *p_bno055;
 /*	 LOCAL FUNCTIONS	*/
+/** \brief
+ *  Makes the library less shite.
+ * \param
+ * \param
+ * \return
+ *
+ */
+void bno055_set_active(struct bno055_t *bno055)
+{
+	p_bno055 = bno055;
+}
 /*!
  *	@brief
  *	This API is used for initialize
@@ -99,7 +110,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_init(struct bno055_t *bno055)
         BNO055_INIT_VALUE, BNO055_INIT_VALUE
     };
     /* stuct parameters are assign to bno055*/
-    p_bno055 = bno055;
+    bno055_set_active(bno055);
     /* Write the default page as zero*/
     com_rslt = p_bno055->BNO055_BUS_WRITE_FUNC
                (p_bno055->dev_addr,

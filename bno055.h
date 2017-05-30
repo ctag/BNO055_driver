@@ -2182,6 +2182,7 @@ BNO055_GYRO_ANY_MOTION_THRES_ADDR
 /**************************************************/
 /**\name INITIALIZATION AND REVISION ID FUNCTIONS */
 /**************************************************/
+void bno055_set_active(struct bno055_t *bno055);
 /*!
  *	@brief
  *	This API is used for initialize
