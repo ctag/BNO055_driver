@@ -70,6 +70,9 @@
 
 #include "avr-printf.h" // Because I don't actually know where to put this.
 
+// Turn off warning caused by shitty library code
+#pragma GCC diagnostic ignored "-Wpointer-compare"
+
 /*!
 * @brief For the Linux platform support
 * Please use the types.h for your data types definitions

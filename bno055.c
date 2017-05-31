@@ -62,6 +62,7 @@
 /*	STRUCTURE DEFINITIONS	*/
 static struct bno055_t *p_bno055;
 /*	 LOCAL FUNCTIONS	*/
+
 /** \brief
  *  Makes the library less shite.
  * \param
@@ -73,6 +74,7 @@ void bno055_set_active(struct bno055_t *bno055)
 {
 	p_bno055 = bno055;
 }
+
 /*!
  *	@brief
  *	This API is used for initialize
