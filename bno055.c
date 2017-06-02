@@ -117,7 +117,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_init(struct bno055_t *bno055)
     com_rslt = p_bno055->BNO055_BUS_WRITE_FUNC
                (p_bno055->dev_addr,
                 BNO055_PAGE_ID_REG, &bno055_page_zero_u8, BNO055_GEN_READ_WRITE_LENGTH);
-    printf("bno_init, page_id write, err: 0x%02X, data: %d\n", com_rslt, bno055_page_zero_u8);
+//    printf("bno_init, page_id write, err: 0x%02X, data: %d\n", com_rslt, bno055_page_zero_u8);
     /* Read the chip id of the sensor from page
     zero 0x00 register*/
     com_rslt += p_bno055->BNO055_BUS_READ_FUNC
@@ -6625,6 +6625,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_get_gyro_calib_stat(
 BNO055_RETURN_FUNCTION_TYPE bno055_get_sys_calib_stat(
     u8 *sys_calib_u8)
 {
+//	printf("Sys calib:\n");
     /* Variable used to return value of
     communication routine*/
     BNO055_RETURN_FUNCTION_TYPE com_rslt = BNO055_ERROR;
@@ -6633,6 +6634,7 @@ BNO055_RETURN_FUNCTION_TYPE bno055_get_sys_calib_stat(
     /* Check the struct p_bno055 is empty*/
     if (p_bno055 == BNO055_INIT_VALUE)
     {
+    	printf("Null pointer.\n");
         return BNO055_E_NULL_PTR;
     }
     else
@@ -6650,11 +6652,13 @@ BNO055_RETURN_FUNCTION_TYPE bno055_get_sys_calib_stat(
                        (p_bno055->dev_addr,
                         BNO055_SYS_CALIB_STAT_REG,
                         &data_u8r, BNO055_GEN_READ_WRITE_LENGTH);
+//			printf("Read result: %d\n", com_rslt);
             *sys_calib_u8 =
                 BNO055_GET_BITSLICE(data_u8r, BNO055_SYS_CALIB_STAT);
         }
         else
         {
+        	printf("Page write failed.\n");
             com_rslt = BNO055_ERROR;
         }
     }
